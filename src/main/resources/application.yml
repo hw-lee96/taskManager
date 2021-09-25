@@ -1,0 +1,33 @@
+# DataSource
+spring:
+  config:
+    use-legacy-processing: true
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    generate-ddl: true
+    show-sql: true
+
+# ServerSource
+server:
+  address: localhost
+  port: 8000
+spring.profiles.include: localEnv
+---
+spring:
+  profiles: local
+spring.profiles.include: localEnv
+server:
+  port: 8001
+---
+spring:
+  profiles: dev
+spring.profiles.include: devEnv
+server:
+  port: 8002
+---
+spring:
+  profiles: real
+spring.profiles.include: realEnv
+server:
+  port: 8003  
